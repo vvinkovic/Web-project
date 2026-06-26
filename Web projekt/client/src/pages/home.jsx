@@ -8,7 +8,7 @@ export default function Home() {
 
       <div style={{ marginTop: "20px" }}>
         <Link to="/login">
-          <button>Login</button>
+          <button>Login proba</button>
         </Link>
 
         <Link to="/register">
