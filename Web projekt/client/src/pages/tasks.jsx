@@ -23,7 +23,7 @@ export default function Tasks() {
       <input
         value={task}
         onChange={(e) => setTask(e.target.value)}
-        placeholder="Unesi task"
+        placeholder="Unesi zadatak"
       />
 
       <button onClick={addTask}>Dodaj</button>
