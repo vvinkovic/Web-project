@@ -1,16 +1,30 @@
+
+
 import React from "react";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   return (
-    <div className="container d-flex justify-content-center align-items-center vh-100">
-      <div className="card p-4" style={{ width: "300px" }}>
-        <h3 className="text-center mb-3">Login</h3>
+    <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh", background: "#f5f6f8" }}>
 
-        <input className="form-control mb-2" placeholder="Email" />
-        <input className="form-control mb-3" placeholder="Password" type="password" />
+      <div className="card p-5 shadow-sm border-0" style={{ width: "400px", borderRadius: "16px" }}>
 
-        <button className="btn btn-primary w-100">Login</button>
+        <h3 className="text-center mb-4">Login</h3>
+
+        <input className="form-control mb-3" placeholder="Email" />
+        <input className="form-control mb-3" type="password" placeholder="Password" />
+
+        <button className="btn btn-primary w-100 mb-3">
+          Login
+        </button>
+
+        <p className="text-center mb-0">
+          Don't have an account?{" "}
+          <Link to="/register">Register</Link>
+        </p>
+
       </div>
+
     </div>
   );
 };

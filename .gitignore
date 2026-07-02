@@ -1,0 +1,62 @@
+# ====================================================================
+# 1. OVISNOSTI I PAKETI (Najveći krivci za 4000+ promjena)
+# ====================================================================
+node_modules/
+jspm_packages/
+web_modules/
+
+# ====================================================================
+# 2. PRODUKCIJA I PRODUKTIVNI KOD (Automatski generirane mape)
+# ====================================================================
+dist/
+build/
+.next/
+out/
+.docusaurus/
+.cache/
+
+# ====================================================================
+# 3. TAJNE I KONFIGURACIJA (Lozinke, API ključevi - NIKADA na GitHub)
+# ====================================================================
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+*.key
+
+# ====================================================================
+# 4. SISTEMSKE DATOTEKE (Smeće koje stvaraju Windows i Mac)
+# ====================================================================
+# Mac
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+Desktop.ini
+
+# ====================================================================
+# 5. POSTAVKE EDITORA (VS Code i ostali)
+# ====================================================================
+.vscode/
+!.vscode/extensions.json
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.swp
+
+# ====================================================================
+# 6. LOGOVI (Zapisi o greškama)
+# ====================================================================
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
