@@ -8,6 +8,7 @@ db.exec(`
     username TEXT NOT NULL,
     email TEXT NOT NULL UNIQUE,
     passwordHash TEXT NOT NULL,
+    profilePicture TEXT,
     createdAt TEXT DEFAULT (datetime('now'))
   )
 `);

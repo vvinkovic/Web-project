@@ -1,8 +1,17 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaUserPlus, FaTasks, FaChartLine } from "react-icons/fa";
+import { useEffect, useState } from "react";
 
 const Home = () => {
+    const [quote, setQuote] = useState(null);
+
+  useEffect(() => {
+    fetch("http://localhost:5000/api/quote")
+      .then((res) => res.json())
+      .then((data) => setQuote(data))
+      .catch(() => setQuote(null));
+  }, []);
   return (
     <div style={{ backgroundColor: "#f5f6f8", minHeight: "100vh" }}>
 
@@ -132,6 +141,34 @@ const Home = () => {
         </div>
       </div>
 
+       
+             {/* CITAT DANA */}
+      {quote && (
+        <div
+          className="py-5 text-center text-white"
+          style={{ backgroundColor: "#0d6efd" }}
+        >
+          <div className="container">
+            <p
+              className="text-uppercase mb-3"
+              style={{ letterSpacing: "3px", fontSize: "0.85rem", opacity: 0.85 }}
+            >
+              ✦ Quote of the day ✦
+            </p>
+
+            <p
+              className="fst-italic mb-3 mx-auto"
+              style={{ fontSize: "1.4rem", lineHeight: "1.5", maxWidth: "700px" }}
+            >
+              "{quote.text}"
+            </p>
+
+            <p className="fw-semibold mb-0" style={{ opacity: 0.9 }}>
+              — {quote.author}
+            </p>
+          </div>
+        </div>
+      )}
 
       {/* STATS */}
       <div style={{ backgroundColor: "#fff" }} className="py-5">
@@ -159,8 +196,6 @@ const Home = () => {
 
         </div>
       </div>
-
-
 
 
 

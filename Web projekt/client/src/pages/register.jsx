@@ -1,7 +1,32 @@
-import React from "react";
-import { Link } from "react-router-dom";
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { useAuth } from "../context/AuthContext";
 
 const Register = () => {
+  const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [error, setError] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const { register } = useAuth();
+  const navigate = useNavigate();
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    setError("");
+    setLoading(true);
+
+    try {
+      await register(username, email, password);
+      navigate("/tasks");
+    } catch (err) {
+      setError(err.message);
+    } finally {
+      setLoading(false);
+    }
+  }
+
   return (
     <div className="d-flex justify-content-center align-items-center" style={{ minHeight: "100vh", background: "#f5f6f8" }}>
 
@@ -9,13 +34,37 @@ const Register = () => {
 
         <h3 className="text-center mb-4">Register</h3>
 
-        <input className="form-control mb-3" placeholder="Username" />
-        <input className="form-control mb-3" placeholder="Email" />
-        <input className="form-control mb-3" type="password" placeholder="Password" />
+        <form onSubmit={handleSubmit}>
+          {error && <div className="alert alert-danger py-2">{error}</div>}
 
-        <button className="btn btn-primary w-100 mb-3">
-          Create Account
-        </button>
+          <input
+            className="form-control mb-3"
+            placeholder="Username"
+            value={username}
+            onChange={(e) => setUsername(e.target.value)}
+            required
+          />
+          <input
+            className="form-control mb-3"
+            placeholder="Email"
+            type="email"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            required
+          />
+          <input
+            className="form-control mb-3"
+            type="password"
+            placeholder="Password"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            required
+          />
+
+          <button className="btn btn-primary w-100 mb-3" type="submit" disabled={loading}>
+            {loading ? "Kreiranje..." : "Create Account"}
+          </button>
+        </form>
 
         <p className="text-center mb-0">
           Already have account?{" "}
