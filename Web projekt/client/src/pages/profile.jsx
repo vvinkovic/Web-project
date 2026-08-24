@@ -98,7 +98,7 @@ export default function Profile() {
 
   async function handleDeleteAccount() {
     const confirmed = window.confirm(
-      "Jesi li sigurna da želiš trajno obrisati svoj račun? Ova radnja se ne može poništiti."
+      "Are you sure you want to permanently delete your account? This action cannot be undone."
     );
     if (!confirmed) return;
 
@@ -119,11 +119,11 @@ export default function Profile() {
     }
   }
 
-  if (loading) return <p className="text-center py-5">Učitavanje...</p>;
+  if (loading) return <p className="text-center py-5">Loading...</p>;
 
   return (
     <div className="container py-5" style={{ maxWidth: "500px" }}>
-      <h1 className="mb-4">Moj profil</h1>
+      <h1 className="mb-4">My profile</h1>
 
       {error && <div className="alert alert-danger py-2">{error}</div>}
       {message && <div className="alert alert-success py-2">{message}</div>}
@@ -150,7 +150,7 @@ export default function Profile() {
           <input type="file" accept="image/*" onChange={handleFileChange} className="form-control mb-2" />
           {selectedFile && (
             <button className="btn btn-primary btn-sm" onClick={handleUploadPicture}>
-              Spremi novu sliku
+              Save new image
             </button>
           )}
         </div>
@@ -158,7 +158,7 @@ export default function Profile() {
 
       <form onSubmit={handleUpdateProfile} className="mb-5">
         <div className="mb-3">
-          <label className="form-label">Korisničko ime</label>
+          <label className="form-label">Name</label>
           <input
             className="form-control"
             value={username}
@@ -177,15 +177,15 @@ export default function Profile() {
         </div>
 
         <button className="btn btn-primary w-100" type="submit">
-          Spremi izmjene
+          Save
         </button>
       </form>
 
       <div className="border-top pt-4">
-        <h5 className="text-danger">Opasna zona</h5>
-        <p className="text-muted">Brisanje računa je trajno i ne može se poništiti.</p>
+        <h5 className="text-danger">Danger zone</h5>
+        <p className="text-muted">Deleting your account is permanent and cannot be undone.</p>
         <button className="btn btn-outline-danger" onClick={handleDeleteAccount}>
-          Obriši račun
+          Delete account
         </button>
       </div>
     </div>

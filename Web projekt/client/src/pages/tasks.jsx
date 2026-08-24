@@ -90,7 +90,7 @@ export default function Tasks() {
 
   return (
     <div className="container py-5" style={{ maxWidth: "600px" }}>
-      <h1 className="mb-4">Moji zadaci</h1>
+      <h1 className="mb-4">My tasks</h1>
 
       {error && <div className="alert alert-danger py-2">{error}</div>}
 
@@ -100,17 +100,17 @@ export default function Tasks() {
           value={task}
           onChange={(e) => setTask(e.target.value)}
           onKeyDown={(e) => e.key === "Enter" && addTask()}
-          placeholder="Unesi zadatak"
+          placeholder="Enter task"
         />
         <button className="btn btn-primary" onClick={addTask}>
-          Dodaj
+          Add
         </button>
       </div>
 
       {loading ? (
-        <p className="text-muted">Učitavanje...</p>
+        <p className="text-muted">Loading...</p>
       ) : tasks.length === 0 ? (
-        <p className="text-muted">Nemaš još niti jedan zadatak.</p>
+        <p className="text-muted">You don't have any tasks yet.</p>
       ) : (
         <ul className="list-group">
           {tasks.map((t) => (

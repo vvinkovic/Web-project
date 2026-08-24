@@ -34,7 +34,7 @@ export default function Navbar() {
 
         {user ? (
           <>
-            <span className="nav-link">Bok, {user.username}</span>
+            <span className="nav-link">Hello, {user.username}</span>
             <button className="btn btn-outline-light btn-sm ms-lg-2" onClick={handleLogout}>
               Logout
             </button>
