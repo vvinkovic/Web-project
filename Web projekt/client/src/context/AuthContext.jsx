@@ -2,7 +2,7 @@ import { createContext, useContext, useState } from "react";
 
 const AuthContext = createContext(null);
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://backed-tty7.onrender.com/api";
 
 export function AuthProvider({ children }) {
   const [user, setUser] = useState(() => {
