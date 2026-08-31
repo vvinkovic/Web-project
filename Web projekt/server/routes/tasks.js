@@ -21,14 +21,14 @@ router.get("/", (req, res) => {
 // POST /api/tasks - kreiraj novi task
 router.post("/", (req, res) => {
   try {
-    const { title } = req.body;
+    const { title, dueDate } = req.body;
     if (!title || !title.trim()) {
       return res.status(400).json({ message: "Naslov taska je obavezan." });
     }
 
     const result = db
-      .prepare("INSERT INTO tasks (userId, title) VALUES (?, ?)")
-      .run(req.userId, title);
+      .prepare("INSERT INTO tasks (userId, title, dueDate) VALUES (?, ?, ?)")
+      .run(req.userId, title, dueDate || null);
 
     const task = db.prepare("SELECT * FROM tasks WHERE id = ?").get(result.lastInsertRowid);
     res.status(201).json(task);
@@ -50,8 +50,14 @@ router.put("/:id", (req, res) => {
 
     const done = req.body.done !== undefined ? (req.body.done ? 1 : 0) : existing.done;
     const title = req.body.title !== undefined ? req.body.title : existing.title;
+    const dueDate = req.body.dueDate !== undefined ? req.body.dueDate : existing.dueDate;
 
-    db.prepare("UPDATE tasks SET title = ?, done = ? WHERE id = ?").run(title, done, req.params.id);
+    db.prepare("UPDATE tasks SET title = ?, done = ?, dueDate = ? WHERE id = ?").run(
+      title,
+      done,
+      dueDate,
+      req.params.id
+    );
 
     const updated = db.prepare("SELECT * FROM tasks WHERE id = ?").get(req.params.id);
     res.json(updated);

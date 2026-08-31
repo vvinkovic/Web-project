@@ -19,6 +19,7 @@ db.exec(`
     userId INTEGER NOT NULL,
     title TEXT NOT NULL,
     done INTEGER DEFAULT 0,
+    dueDate TEXT,
     createdAt TEXT DEFAULT (datetime('now')),
     FOREIGN KEY(userId) REFERENCES users(id)
   )
