@@ -108,6 +108,3 @@ Frontend je dostupan na `http://localhost:5173`.
 | DELETE | `/api/profile` | Obriši korisnički račun | da |
 | GET | `/api/quote` | Citat dana (vanjski API) | ne |
 
-## 👤 Autor
-
-Projekt izrađen u sklopu kolegija Web programiranje.
