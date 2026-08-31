@@ -1,10 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import Home from "./pages/Home";
-import Login from "./pages/Login";
-import Register from "./pages/Register";
-import Tasks from "./pages/Tasks";
-import Profile from "./pages/Profile";
-import Navbar from "./components/Navbar";
+import Home from "./pages/home";
+import Login from "./pages/login";
+import Register from "./pages/register";
+import Tasks from "./pages/tasks";
+import Profile from "./pages/profile";
+import Navbar from "./components/navbar";
 import ProtectedRoute from "./components/ProtectedRoute";
 import { AuthProvider } from "./context/AuthContext";
 
