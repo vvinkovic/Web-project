@@ -182,7 +182,7 @@ export default function Profile() {
       </form>
 
       <div className="border-top pt-4">
-        <h5 className="text-danger">Danger zone</h5>
+        <h5 className="text-danger">Danger zone!</h5>
         <p className="text-muted">Deleting your account is permanent and cannot be undone.</p>
         <button className="btn btn-outline-danger" onClick={handleDeleteAccount}>
           Delete account

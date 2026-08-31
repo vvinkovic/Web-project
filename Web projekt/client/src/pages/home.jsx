@@ -41,7 +41,7 @@ const Home = () => {
         {/* content */}
         <div style={{ position: "relative", zIndex: 2 }}>
           <h1 className="fw-bold">Student Tracker</h1>
-          <p className="lead">Organize your study life easily</p>
+          <p className="lead">Organize your study life easily!</p>
 
           <div className="mt-3">
             <Link to="/login" className="btn btn-primary me-2">

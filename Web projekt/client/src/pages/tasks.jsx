@@ -110,7 +110,7 @@ export default function Tasks() {
       {loading ? (
         <p className="text-muted">Loading...</p>
       ) : tasks.length === 0 ? (
-        <p className="text-muted">You don't have any tasks yet.</p>
+        <p className="text-muted">You don't have any tasks yet</p>
       ) : (
         <ul className="list-group">
           {tasks.map((t) => (

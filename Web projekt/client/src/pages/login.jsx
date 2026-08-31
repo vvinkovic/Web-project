@@ -60,7 +60,7 @@ const Login = () => {
 
         <p className="text-center mb-0">
           Don't have an account?{" "}
-          <Link to="/register">Register</Link>
+          <Link to="/register">Register now</Link>
         </p>
 
       </div>
