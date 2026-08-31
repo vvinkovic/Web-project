@@ -133,7 +133,7 @@ export default function Profile() {
           src={
             previewUrl ||
             (profile?.profilePicture
-              ? `http://localhost:5000${profile.profilePicture}`
+              ? `https://backed-tty7.onrender.com${profile.profilePicture}`
               : "https://via.placeholder.com/150?text=Bez+slike")
           }
           alt="Profilna slika"
