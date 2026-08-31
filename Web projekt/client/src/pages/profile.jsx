@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
-const API_URL = "http://localhost:5000/api";
+const API_URL = "https://backed-tty7.onrender.com/api";
 
 export default function Profile() {
   const { token, logout } = useAuth();

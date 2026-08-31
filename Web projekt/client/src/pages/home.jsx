@@ -7,7 +7,7 @@ const Home = () => {
     const [quote, setQuote] = useState(null);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/quote")
+    fetch("https://backed-tty7.onrender.com/api/quote")
       .then((res) => res.json())
       .then((data) => setQuote(data))
       .catch(() => setQuote(null));
