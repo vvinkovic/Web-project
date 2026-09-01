@@ -54,7 +54,7 @@ const Login = () => {
           />
 
           <button className="btn btn-primary w-100 mb-3" type="submit" disabled={loading}>
-            {loading ? "Prijava..." : "Login"}
+            {loading ? "Logging in..." : "Login"}
           </button>
         </form>
 

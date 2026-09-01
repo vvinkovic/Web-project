@@ -23,7 +23,7 @@ router.post("/", (req, res) => {
   try {
     const { title, dueDate } = req.body;
     if (!title || !title.trim()) {
-      return res.status(400).json({ message: "Naslov taska je obavezan." });
+      return res.status(400).json({ message: "Task title is required." });
     }
 
     const result = db
@@ -45,7 +45,7 @@ router.put("/:id", (req, res) => {
       .get(req.params.id, req.userId);
 
     if (!existing) {
-      return res.status(404).json({ message: "Task nije pronađen." });
+      return res.status(404).json({ message: "Task not found." });
     }
 
     const done = req.body.done !== undefined ? (req.body.done ? 1 : 0) : existing.done;
@@ -74,11 +74,11 @@ router.delete("/:id", (req, res) => {
       .get(req.params.id, req.userId);
 
     if (!existing) {
-      return res.status(404).json({ message: "Task nije pronađen." });
+      return res.status(404).json({ message: "Task not found." });
     }
 
     db.prepare("DELETE FROM tasks WHERE id = ?").run(req.params.id);
-    res.json({ message: "Task obrisan." });
+    res.json({ message: "Task deleted." });
   } catch (err) {
     res.status(500).json({ message: "Greška na serveru.", error: err.message });
   }

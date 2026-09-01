@@ -23,7 +23,7 @@ const upload = multer({
     const allowed = [".jpg", ".jpeg", ".png", ".webp"];
     const ext = path.extname(file.originalname).toLowerCase();
     if (allowed.includes(ext)) cb(null, true);
-    else cb(new Error("Dozvoljene su samo slike (jpg, png, webp)."));
+    else cb(new Error("Only jpg, png, and webp files are allowed."));
   },
 });
 
@@ -35,7 +35,7 @@ router.get("/", (req, res) => {
     .prepare("SELECT id, username, email, profilePicture FROM users WHERE id = ?")
     .get(req.userId);
 
-  if (!user) return res.status(404).json({ message: "Korisnik nije pronađen." });
+  if (!user) return res.status(404).json({ message: "User not found." });
 
   res.json(user);
 });
@@ -46,7 +46,7 @@ router.put("/", (req, res) => {
     const { username, email } = req.body;
     const existing = db.prepare("SELECT * FROM users WHERE id = ?").get(req.userId);
 
-    if (!existing) return res.status(404).json({ message: "Korisnik nije pronađen." });
+    if (!existing) return res.status(404).json({ message: "User not found." });
 
     const newUsername = username || existing.username;
     const newEmail = email || existing.email;
@@ -70,7 +70,7 @@ router.put("/", (req, res) => {
 // POST /api/profile/picture - upload profilne slike
 router.post("/picture", upload.single("picture"), (req, res) => {
   if (!req.file) {
-    return res.status(400).json({ message: "Slika nije poslana." });
+    return res.status(400).json({ message: "Picture is required." });
   }
 
   const picturePath = `/uploads/${req.file.filename}`;
@@ -84,7 +84,7 @@ router.post("/picture", upload.single("picture"), (req, res) => {
 router.delete("/", (req, res) => {
   db.prepare("DELETE FROM tasks WHERE userId = ?").run(req.userId);
   db.prepare("DELETE FROM users WHERE id = ?").run(req.userId);
-  res.json({ message: "Račun obrisan." });
+  res.json({ message: "Account deleted." });
 });
 
 export default router;
