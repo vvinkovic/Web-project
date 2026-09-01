@@ -66,7 +66,7 @@ export default function Profile() {
       setProfile({ ...profile, profilePicture: data.profilePicture });
       setSelectedFile(null);
       setPreviewUrl(null);
-      setMessage("Profilna slika ažurirana.");
+      setMessage("Profile picture updated.");
     } catch (err) {
       setError(err.message);
     }
@@ -90,7 +90,7 @@ export default function Profile() {
       if (!res.ok) throw new Error(data.message);
 
       setProfile(data);
-      setMessage("Profil ažuriran.");
+      setMessage("Profile updated.");
     } catch (err) {
       setError(err.message);
     }
@@ -136,7 +136,7 @@ export default function Profile() {
               ? `https://backed-tty7.onrender.com${profile.profilePicture}`
               : "https://via.placeholder.com/150?text=Bez+slike")
           }
-          alt="Profilna slika"
+          alt="Profile picture"
           style={{
             width: "150px",
             height: "150px",

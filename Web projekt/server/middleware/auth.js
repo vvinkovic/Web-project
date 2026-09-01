@@ -4,7 +4,7 @@ export function requireAuth(req, res, next) {
   const authHeader = req.headers.authorization;
 
   if (!authHeader || !authHeader.startsWith("Bearer ")) {
-    return res.status(401).json({ message: "Nisi prijavljen." });
+    return res.status(401).json({ message: "Authorization header is missing or invalid." });
   }
 
   const token = authHeader.split(" ")[1];
@@ -14,6 +14,6 @@ export function requireAuth(req, res, next) {
     req.userId = decoded.userId;
     next();
   } catch (err) {
-    return res.status(401).json({ message: "Token nije valjan ili je istekao." });
+    return res.status(401).json({ message: "Token is not valid or has expired." });
   }
 }
